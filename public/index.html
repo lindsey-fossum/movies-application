@@ -22,31 +22,47 @@
     </div>
 
     <div class="action-form">
-        <form>
-            <select>
+
+            <select id="hoobajooba">
                 <option value="view" selected>View</option>
                 <option value="edit">Edit</option>
                 <option value="remove">Remove</option>
                 <option value="add">Add</option>
             </select>
-        </form>
+        <button id="form-select">choose your journey</button>
+
     </div>
 
     <div class="add-form">
         <form name="add-movie" method="">
-        <label for="title">Movie Title</label>
-        <input type="text" id="title" placeholder="title">
+            <label for="title">Movie Title</label>
+            <input type="text" id="title" placeholder="title">
+                <select id="ratings">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
 
-            <select id="ratings">
-                <option value="one">1</option>
-                <option value="two">2</option>
-                <option value="three">3</option>
-                <option value="four">4</option>
-                <option value="five">5</option>
-            </select>
-
-        <button id="add-movie-btn" type="submit">Submit</button>
+                <button id="add-movie-btn" type="submit">Submit</button>
         </form>
+    </div>
+
+    <div id="change-form">
+        <!--<label for="movie-to-edit">Choose a Movie</label>
+        <select name="movies" id="movie-to-edit">
+
+        </select>
+        <label for="new-movie-ratings">Enter Movie Rating: </label>
+            <select id="new-movie-ratings">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        <button id="edit-movie-btn"></button>-->
     </div>
 
 
