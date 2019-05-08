@@ -7,10 +7,48 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>Hello There!</h1>
-        <p>To get started, edit <code>src/index.js</code>.</p>
+    <!--<div class="container">-->
+        <!--<h1>Hello There!</h1>-->
+        <!--<p>To get started, edit <code>src/index.js</code>.</p>-->
+    <!--</div>-->
+
+    <div class="movie-form">
+        <form>
+            <select>
+                <option value="movie-1">Star Wars: A New Hope</option>
+                <option value="movie-2">Casablanca</option>
+            </select>
+        </form>
     </div>
+
+    <div class="action-form">
+        <form>
+            <select>
+                <option value="view" selected>View</option>
+                <option value="edit">Edit</option>
+                <option value="remove">Remove</option>
+                <option value="add">Add</option>
+            </select>
+        </form>
+    </div>
+
+    <div class="add-form">
+        <form name="add-movie" method="">
+        <label for="title">Movie Title</label>
+        <input type="text" id="title" placeholder="title">
+
+            <select id="ratings">
+                <option value="one">1</option>
+                <option value="two">2</option>
+                <option value="three">3</option>
+                <option value="four">4</option>
+                <option value="five">5</option>
+            </select>
+
+        <button id="add-movie-btn" type="submit">Submit</button>
+        </form>
+    </div>
+
 
     <script src="./main.js"></script>
 </body>
