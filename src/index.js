@@ -24,8 +24,18 @@ getMovies().then((movies) => {
     })
     console.log('Here are all the movies:');
     movies.forEach(({title, rating, id}) => {
+        let html='';
+        html += `<div class="card m-2 mx-auto" style="width: 18rem;" >`;
+        html += `<img src="200x150.svg" class="card-img-top" alt="...">`;
+        html += `<div class="card-body">`;
+        html += `<h5>${title}</h5>`;
+        html += `<p>${rating}</p>`;
+        html += `</div>`;
+        html += `</div>`;
+        console.log("FUCKING HTML " + html);
+        $('#add-movie-content').append(html);
         console.log(`id#${id} - ${title} - rating: ${rating}`);
-    })
+    });
 
     }).catch((error) => {
     alert('Oh no! Something went wrong.\nCheck the console for details.');
