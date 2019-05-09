@@ -48,11 +48,13 @@ function addMovies() {
     console.log(titlePlus);
     alert(title);
     alert(ratings);
-    fetch(`http://www.omdbapi.com/?apikey=`/*put that shit back here*/`&t=${titlePlus}`).then(res => res.json())
+    /*fetch(`http://www.omdbapi.com/?apikey=e2d23a7a&t=${titlePlus}`).then(res =>{
+     res.json()
+    })
         .then(data => {
             console.log(data);
-        })
-
+        }).catch(console.log('you have meddled with the primal forces of nature'))
+*/
 
     const moviePost = {title: `${title}`, rating: `${ratings}`, id: ""};
     const url = '/api/movies';
@@ -62,7 +64,7 @@ function addMovies() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(moviePost),
-    }
+    };
     fetch(url, options)
         .then(console.log(url), console.log(options))
         .catch(console.log("failure"));
