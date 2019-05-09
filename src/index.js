@@ -196,6 +196,13 @@ function editMovie() { //changes from makeEditForm() applied to JSON
 /*
 movieInfo().then(data => console.log(data));*/
 
+// HIDING SHIT
+
+$(function () {
+    $(".add-form").hide();
+});
+$("#")
+
 
 
 
