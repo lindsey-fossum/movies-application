@@ -15,6 +15,7 @@ import sayHello from './hello';
 
 sayHello('World');
 
+var films;
 getMovies().then((movies) => {
     let options;
     movies.forEach((element) => {
@@ -24,22 +25,17 @@ getMovies().then((movies) => {
     })
     console.log('Here are all the movies:');
     movies.forEach(({title, rating, id}) => {
-        let html='';
-        html += `<div class="card m-2 mx-auto" style="width: 18rem;" >`;
-        html += `<img src="200x150.svg" class="card-img-top" alt="...">`;
-        html += `<div class="card-body">`;
-        html += `<h5>${title}</h5>`;
-        html += `<p>${rating}</p>`;
-        html += `</div>`;
-        html += `</div>`;
-        console.log("FUCKING HTML " + html);
-        $('#add-movie-content').append(html);
-        console.log(`id#${id} - ${title} - rating: ${rating}`);
-    });
 
-    }).catch((error) => {
+        omdbApi(title);
+        console.log(`id#${id} - ${title} - rating: ${rating}`);
+    })
+    films = movies;
+
+}).catch((error) => {
     alert('Oh no! Something went wrong.\nCheck the console for details.');
     console.log(error);
+
+
 });
 
 $('#edit-movie-btn').on("click", editMovie);
@@ -78,6 +74,8 @@ function addMovies() {
     fetch(url, options)
         .then(console.log(url), console.log(options))
         .catch(console.log("failure"));
+
+    getMovies();
 }
 
 function updateForm() {
@@ -139,7 +137,7 @@ function deleteFilmForm () {
                 jsonMovieId = element.id;
                 return fetchRequestThree(jsonMovieId);
             }
-        })
+        });
     });
     function fetchRequestThree(jsonMovieId) {
         /*const moviePost = {title: `${newTitle}`, rating: `${newRating}`, id: ""};*/
@@ -150,7 +148,7 @@ function deleteFilmForm () {
                 'Content-Type': 'application/json',
             },
             /*body: JSON.stringify(moviePost),*/
-        }
+        };
         fetch(url, options)
             .then(console.log(url), console.log(options))
             .catch(console.log("failure"), console.log(url), console.log(options));
@@ -193,15 +191,91 @@ function editMovie() { //changes from makeEditForm() applied to JSON
             .catch(console.log("failure"), console.log(url), console.log(options));
     }
 }
+function renderFilms(data) {
+    let html='';
+    html += `<div class="card m-2 mx-auto" style="width: 18rem;" >`;
+    html += `<img src="${data.Poster}" class="card-img-top" alt="...">`;
+    html += `<div class="card-body">`;
+    html += `<h5>${data.Title}</h5>`;
+    html += `<p>${data.Plot}</p>`;
+    html += `</div>`;
+    html += `</div>`;
+    console.log("FUCKING HTML " + html);
+    $('#add-movie-content').append(html);
+}
+
+function omdbApi(title){
+
+    let titlePlus = title.split(' ');
+    titlePlus = titlePlus.join('+');
+    console.log(titlePlus);
+
+    fetch(`http://www.omdbapi.com/?apikey=e2d23a7a&t=${titlePlus}`).then(res => res.json()).then(data => {
+        console.log(data);
+        renderFilms(data)
+    }).catch(err => console.log('you have meddled with the primal forces of nature'));
+
+
+}
+
+
 /*
 movieInfo().then(data => console.log(data));*/
 
 // HIDING SHIT
 
 $(function () {
-    $(".add-form").hide();
+    $(".card-container").hide();
 });
-$("#")
+$("#logo-movie").on("click", function(e) {
+    $(".card-container").toggle("slow", function() {
+
+    });
+});
+
+$(function () {
+    $("#movie-add").hide();
+});
+$("#add-movie").on("click", function(e) {
+    $("#movie-add").toggle("slow", function() {
+
+    });
+});
+
+$(function () {
+    $("#change-form").hide();
+});
+$("#edit-movie").on("click", function(e) {
+    $("#change-form").toggle("slow", function() {
+
+    });
+});
+
+$(function () {
+    $("#delete-form").hide();
+});
+$("#delete-movie").on("click", function(e) {
+    $("#delete-form").toggle("slow", function() {
+
+    });
+});
+
+$(document).ready(function () {
+    alert("CHEATER CHEATER");
+});
+
+$(function () {
+    $("#add-movie-btn").on("click", function() {
+        location.reload(); //Change so we're not cheaters
+    });
+});
+
+
+
+
+
+
+
 
 
 

@@ -11,7 +11,7 @@
       "id": 6
     },
     {
-      "title": "Star Wars- A New Hope",
+      "title": "Star Wars episode iv A New Hope",
       "rating": "4",
       "id": 7
     },
@@ -34,6 +34,26 @@
       "title": "So I Married An Axe Murderer",
       "rating": "5",
       "id": 13
+    },
+    {
+      "title": "Tommy Boy",
+      "rating": "3",
+      "id": 14
+    },
+    {
+      "title": "Monty Python and the Holy Grail",
+      "rating": "5",
+      "id": 16
+    },
+    {
+      "title": "Big Fish",
+      "rating": "4",
+      "id": 17
+    },
+    {
+      "title": "The Big Lebowski",
+      "rating": "5",
+      "id": 18
     }
   ]
 }
