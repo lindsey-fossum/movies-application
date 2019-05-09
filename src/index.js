@@ -200,6 +200,7 @@ function renderFilms(data) {
     html += `<p>${data.Plot}</p>`;
     html += `</div>`;
     html += `</div>`;
+    $('#loader').css('display', 'none');
     console.log("FUCKING HTML " + html);
     $('#add-movie-content').append(html);
 }
@@ -260,9 +261,9 @@ $("#delete-movie").on("click", function(e) {
     });
 });
 
-$(document).ready(function () {
-    alert("CHEATER CHEATER");
-});
+// $(document).ready(function () {
+//     alert("CHEATER CHEATER");
+// });
 
 $(function () {
     $("#add-movie-btn").on("click", function() {

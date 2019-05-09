@@ -9,3 +9,14 @@
     /*text-align: center;*/
 /*}*/
 
+#loader {
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
