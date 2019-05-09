@@ -19,6 +19,12 @@
       "title": "A Clockwork Orange",
       "rating": "4",
       "id": 8
-    }
+    },
+    {
+      "title": "Don't Be A Menace to South Central While Drinking Your Juice In The Hood",
+      "rating": "1",
+      "id": 9
+    },
+
   ]
 }

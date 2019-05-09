@@ -3,10 +3,13 @@
  */
 const $ = require('jquery');
 
+const key = require('./keys');
+
+
 /**
  * require style imports
  */
-const {getMovies} = require('./api.js');
+const {getMovies, movieInfo} = require('./api.js');
 
 import sayHello from './hello';
 
@@ -40,9 +43,16 @@ function addMovies() {
     console.log("It works!");
     let title = $('#title').val();
     let ratings = $('#ratings').val();
-
+    let titlePlus = title.split(' ');
+    titlePlus = titlePlus.join('+');
+    console.log(titlePlus);
     alert(title);
     alert(ratings);
+    fetch(`http://www.omdbapi.com/?apikey=`/*put that shit back here*/`&t=${titlePlus}`).then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+
 
     const moviePost = {title: `${title}`, rating: `${ratings}`, id: ""};
     const url = '/api/movies';
@@ -171,10 +181,8 @@ function editMovie() { //changes from makeEditForm() applied to JSON
             .catch(console.log("failure"), console.log(url), console.log(options));
     }
 }
-
-
-
-
+/*
+movieInfo().then(data => console.log(data));*/
 
 
 
