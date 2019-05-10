@@ -26,7 +26,7 @@ getMovies().then((movies) => {
     console.log('Here are all the movies:');
     movies.forEach(({title, rating, id}) => {
 
-        omdbApi(title);
+        omdbApi(title, id);
         console.log(`id#${id} - ${title} - rating: ${rating}`);
     })
     films = movies;
@@ -191,21 +191,21 @@ function editMovie() { //changes from makeEditForm() applied to JSON
             .catch(console.log("failure"), console.log(url), console.log(options));
     }
 }
-function renderFilms(data) {
+function renderFilms(data, id) {
     let html='';
-    html += `<div class="card m-2 mx-auto" style="width: 18rem;" >`;
+    html += `<div class="card m-2 mx-auto" id="${id}" style="width: 18rem;" >`;
     html += `<img src="${data.Poster}" class="card-img-top" alt="...">`;
     html += `<div class="card-body">`;
     html += `<h5>${data.Title}</h5>`;
     html += `<p>${data.Plot}</p>`;
     html += `</div>`;
     html += `</div>`;
-    $('#loader').css('display', 'none');
+    $('.loader').css('display', 'none');
     console.log("FUCKING HTML " + html);
     $('#add-movie-content').append(html);
 }
 
-function omdbApi(title){
+function omdbApi(title, id){
 
     let titlePlus = title.split(' ');
     titlePlus = titlePlus.join('+');
@@ -213,7 +213,7 @@ function omdbApi(title){
 
     fetch(`http://www.omdbapi.com/?apikey=e2d23a7a&t=${titlePlus}`).then(res => res.json()).then(data => {
         console.log(data);
-        renderFilms(data)
+        renderFilms(data, id)
     }).catch(err => console.log('you have meddled with the primal forces of nature'));
 
 
@@ -235,7 +235,7 @@ $("#logo-movie").on("click", function(e) {
 });
 
 $(function () {
-    $("#movie-add").hide();
+    $("#movie-add").css('display', 'none');
 });
 $("#add-movie").on("click", function(e) {
     $("#movie-add").toggle("slow", function() {
@@ -267,6 +267,9 @@ $("#delete-movie").on("click", function(e) {
 
 $(function () {
     $("#add-movie-btn").on("click", function() {
+        location.reload(); //Change so we're not cheaters
+    });
+    $("#delete-movie-btn").on("click", function() {
         location.reload(); //Change so we're not cheaters
     });
 });
