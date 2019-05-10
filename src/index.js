@@ -16,27 +16,29 @@ import sayHello from './hello';
 sayHello('World');
 
 var films;
-getMovies().then((movies) => {
-    let options;
-    movies.forEach((element) => {
-        options = `<option>${element.title}</option>`;
-        $('#movie-to-edit').append(options)
-        $('#movie-to-delete').append(options)
-    })
-    console.log('Here are all the movies:');
-    movies.forEach(({title, rating, id}) => {
+function loadMovies() {
+    getMovies().then((movies) => {
+        let options;
+        movies.forEach((element) => {
+            options = `<option>${element.title}</option>`;
+            $('#movie-to-edit').append(options)
+            $('#movie-to-delete').append(options)
+        });
+        console.log('Here are all the movies:');
+        movies.forEach(({title, rating, id}) => {
 
-        omdbApi(title, id);
-        console.log(`id#${id} - ${title} - rating: ${rating}`);
-    })
-    films = movies;
+            omdbApi(title, id, rating);
+            console.log(`id#${id} - ${title} - rating: ${rating}`);
+        })
+        films = movies;
 
-}).catch((error) => {
-    alert('Oh no! Something went wrong.\nCheck the console for details.');
-    console.log(error);
+    }).catch((error) => {
+        alert('Oh no! Something went wrong.\nCheck the console for details.');
+        console.log(error);
 
 
-});
+    });
+}
 
 $('#edit-movie-btn').on("click", editMovie);
 /*$('#form-select-btn').click(updateForm);*/
@@ -74,8 +76,9 @@ function addMovies() {
     fetch(url, options)
         .then(console.log(url), console.log(options))
         .catch(console.log("failure"));
-
-    getMovies();
+    $('.card').remove();
+    $('.loader').css('display', 'block');
+    loadMovies();
 }
 
 function updateForm() {
@@ -127,9 +130,10 @@ function makeEditForm() {
 }
 
 function deleteFilmForm () {
-    getMovies().then((elements) => {
+    alert('hello')
+    /*getMovies().then((elements) => {
         console.log(elements);
-        let movieDeletion = $("#movie-to-delete").val();
+        alert('aqui!');
 
         elements.forEach((element) => {
             if (element.title === movieDeletion) {
@@ -138,6 +142,19 @@ function deleteFilmForm () {
                 return fetchRequestThree(jsonMovieId);
             }
         });
+    });*/
+        let movieDeletion = $("#movie-to-delete").val();
+        alert('this is the movieDeletion ' + movieDeletion);
+    getMovies().then((elements) => {
+        console.log(elements);
+        elements.forEach((element) => {
+            if (element.title === movieDeletion) {
+                // console.log(jsonMovieId);
+                jsonMovieId = element.id;
+                alert('this is the movie to delete ' + jsonMovieId);
+                 fetchRequestThree(jsonMovieId);
+            }
+        })
     });
     function fetchRequestThree(jsonMovieId) {
         /*const moviePost = {title: `${newTitle}`, rating: `${newRating}`, id: ""};*/
@@ -152,6 +169,11 @@ function deleteFilmForm () {
         fetch(url, options)
             .then(console.log(url), console.log(options))
             .catch(console.log("failure"), console.log(url), console.log(options));
+        $(`#${jsonMovieId}`).addClass('d-none');
+        loadMovies();
+        $('.loader').css('display', 'block');
+        $('.card').remove();
+
     }
 }
 
@@ -159,7 +181,6 @@ let jsonMovieId;
 
 function editMovie() { //changes from makeEditForm() applied to JSON
     let newRating = $("#new-movie-ratings").val();
-    let newTitle = $("#new-movie-title").val();
     let movieId = $("#movie-to-edit").val();
 
     console.log("Hello you have reached editMovie function please fuck off");
@@ -171,13 +192,17 @@ function editMovie() { //changes from makeEditForm() applied to JSON
             if (element.title === movieId) {
                 // console.log(jsonMovieId);
                 jsonMovieId = element.id;
-                return fetchRequestTwo(jsonMovieId);
+                console.log('this is the jsonmovieid' + jsonMovieId);
+                 fetchRequestTwo(jsonMovieId, element.title);
             }
-        })
+        });$('.card').remove();
+        $('.loader').css('display', 'block');
+        loadMovies();
+
     });
 
-    function fetchRequestTwo(jsonMovieId) {
-        const moviePost = {title: `${newTitle}`, rating: `${newRating}`, id: ""};
+    function fetchRequestTwo(jsonMovieId, element) {
+        const moviePost = {title: `${element}`, rating: `${newRating}`, id: ""};
         const url = `/api/movies/${jsonMovieId}`;
         const options = {
             method: "PUT",
@@ -189,15 +214,18 @@ function editMovie() { //changes from makeEditForm() applied to JSON
         fetch(url, options)
             .then(console.log(url), console.log(options))
             .catch(console.log("failure"), console.log(url), console.log(options));
+
     }
+
 }
-function renderFilms(data, id) {
+function renderFilms(data, id, rating) {
     let html='';
     html += `<div class="card m-2 mx-auto" id="${id}" style="width: 18rem;" >`;
     html += `<img src="${data.Poster}" class="card-img-top" alt="...">`;
     html += `<div class="card-body">`;
     html += `<h5>${data.Title}</h5>`;
     html += `<p>${data.Plot}</p>`;
+    html += `<p>User Rating: ${rating}/5</p>`;
     html += `</div>`;
     html += `</div>`;
     $('.loader').css('display', 'none');
@@ -205,7 +233,7 @@ function renderFilms(data, id) {
     $('#add-movie-content').append(html);
 }
 
-function omdbApi(title, id){
+function omdbApi(title, id, rating){
 
     let titlePlus = title.split(' ');
     titlePlus = titlePlus.join('+');
@@ -213,7 +241,7 @@ function omdbApi(title, id){
 
     fetch(`http://www.omdbapi.com/?apikey=e2d23a7a&t=${titlePlus}`).then(res => res.json()).then(data => {
         console.log(data);
-        renderFilms(data, id)
+        renderFilms(data, id, rating)
     }).catch(err => console.log('you have meddled with the primal forces of nature'));
 
 
@@ -265,13 +293,17 @@ $("#delete-movie").on("click", function(e) {
 //     alert("CHEATER CHEATER");
 // });
 
-$(function () {
+/*$(function () {
     $("#add-movie-btn").on("click", function() {
         location.reload(); //Change so we're not cheaters
     });
-    $("#delete-movie-btn").on("click", function() {
+   /!* $("#delete-movie-btn").on("click", function() {
         location.reload(); //Change so we're not cheaters
-    });
+    });*!/
+});*/
+
+$(document).ready(function(){
+   loadMovies();
 });
 
 
