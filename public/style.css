@@ -9,6 +9,32 @@
     /*text-align: center;*/
 /*}*/
 
+body {
+    background-color: rgba(246, 61, 44, 0.58);
+}
+
+h5 {
+    background-color: rgba(246, 61, 44, 0.58);
+    border-radius: 5px;
+}
+
+nav {
+    background-color: rgb(247, 142, 134);
+    font-family: 'Work Sans', sans-serif;
+}
+
+.nav-btn {
+    background-color: rgba(246, 61, 44, 0.58);
+    color: white !important;
+}
+
+.nav-btn:hover {
+    background-color: transparent;
+    color: rgba(246, 61, 44, 0.58) !important;
+    border: 1px solid rgba(246, 61, 44, 0.58);
+}
+
+
 .loader {
     border-radius: 50%;
     width: 400px;

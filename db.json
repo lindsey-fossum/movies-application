@@ -2,7 +2,7 @@
   "movies": [
     {
       "title": "Casablanca",
-      "rating": "5",
+      "rating": "3",
       "id": 6
     },
     {
@@ -24,6 +24,46 @@
       "title": "one flew over the cuckoo's nest",
       "rating": "5",
       "id": 11
+    },
+    {
+      "title": "Dune",
+      "rating": "5",
+      "id": 12
+    },
+    {
+      "title": "Blade runner",
+      "rating": "5",
+      "id": 13
+    },
+    {
+      "title": "Arrival",
+      "rating": "5",
+      "id": 14
+    },
+    {
+      "title": "Annihilation",
+      "rating": "3",
+      "id": 15
+    },
+    {
+      "title": "The pink panther strikes again",
+      "rating": "5",
+      "id": 16
+    },
+    {
+      "title": "Beetlejuice",
+      "rating": "4",
+      "id": 17
+    },
+    {
+      "title": "The Man Who Knew Too Little",
+      "rating": "5",
+      "id": 18
+    },
+    {
+      "title": "Laura",
+      "rating": "5",
+      "id": 19
     }
   ]
 }

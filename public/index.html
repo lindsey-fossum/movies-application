@@ -7,6 +7,7 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous">
     <link rel="stylesheet" href="/style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 </head>
 <body>
 
@@ -18,13 +19,76 @@
 
 <div class="container">
 
-    <nav class="btn navbar-light bg-light mx-auto">
-        <button class="btn navbar-brand" id="logo-movie">Movie Shit</button>
-        <button class="btn navbar-brand" id="edit-movie">Edit Your Movie</button>
-        <button class="btn navbar-brand" id="delete-movie">Removie</button>
-        <button class="btn navbar-brand" id="add-movie">Add Movie</button>
+    <nav class="btn navbar-light w-100" role="navigation">
+        <a class="btn navbar-brand">
+            <img src="ticket-alt-solid.svg" alt="ticket-logo" width="50" height="50">
+        </a>
+        <button class="btn nav-btn navbar-brand" id="edit-movie">Edit Your Movie</button>
+        <button class="btn nav-btn navbar-brand" id="delete-movie">Removie</button>
+        <button class="btn nav-btn navbar-brand" id="add-movie">Add Movie</button>
     </nav>
 
+</div>
+
+<!--Add a movie and assign rating-->
+
+<div class="container">
+    <div class="add-form">
+        <form name="add-movie" id="movie-add">
+            <div class="form-group">
+                <label for="title">Enter the title of your movie</label>
+                <input class="form-control" type="text" id="title" placeholder="ex. The Gods Must Be Crazy">
+            </div>
+            <div class="form-group">
+                <label for="ratings">Rate your movie</label>
+                <select class="form-control" id="ratings">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" id="add-movie-btn" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+<!--Choose movie to edit-->
+
+<div class="container">
+    <div class="add-form" id="change-form">
+        <label for="movie-to-edit">Choose a Movie</label>
+        <select class="form-control" name="movies" id="movie-to-edit"></select>
+        <br>
+        <!--<label for="new-movie-title">New Movie Title</label>-->
+        <!--<input class="form-control" id="new-movie-title" type="text">-->
+        <!--<br>-->
+        <label for="new-movie-ratings">Enter Movie Rating: </label>
+        <select class="form-control" id="new-movie-ratings">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <br>
+        <button class="btn btn-primary" id="edit-movie-btn">Submit ahoy</button>
+    </div>
+</div>
+
+
+
+<!--Form to delete-->
+
+<div class="container">
+    <div class="add-form" id="delete-form">
+        <label for="movie-to-delete">Choose a Film to Send to the Abyss</label>
+        <select class="form-control add-form" name="movies" id="movie-to-delete"></select>
+        <br>
+        <button class="btn btn-primary" id="delete-movie-btn">Relegate to the Annals of History</button>
+    </div>
 </div>
 
 
@@ -49,69 +113,7 @@
 </div>
 
 
-<!--Add a movie and assign rating-->
 
-<div class="container">
-    <div class="add-form">
-        <form name="add-movie" id="movie-add">
-            <div class="form-group">
-                <label for="title">Enter the title of your movie</label>
-                <input class="form-control" type="email" id="title" placeholder="ex. The Gods Must Be Crazy">
-            </div>
-            <div class="form-group">
-                <label for="ratings">Rate your movie</label>
-                <select class="form-control" id="ratings">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-            <button class="btn btn-primary" id="add-movie-btn" type="submit">Submit</button>
-        </form>
-    </div>
-</div>
-
-
-<!--Choose movie to edit-->
-
-<div class="container">
-    <div class="add-form" id="change-form">
-    <label for="movie-to-edit">Choose a Movie</label>
-    <select class="form-control" name="movies" id="movie-to-edit"></select>
-    <br>
-    <label for="new-movie-title">New Movie Title</label>
-    <input class="form-control" id="new-movie-title" type="text">
-    <br>
-    <label for="new-movie-ratings">Enter Movie Rating: </label>
-    <select class="form-control" id="new-movie-ratings">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <br>
-
-    <button class="btn btn-primary" id="edit-movie-btn">Submit ahoy</button>
-</div>
-</div>
-
-<hr>
-
-<!--Form to delete-->
-
-<div class="container">
-<div class="add-form" id="delete-form">
-    <label for="movie-to-delete">Choose a Film to Send to the Abyss</label>
-    <select class="add-form" name="movies" id="movie-to-delete">
-
-    </select>
-    <br>
-    <button class="btn btn-primary" id="delete-movie-btn">Relegate to the Annals of History</button>
-</div>
-</div>
 
 
 <script src="./main.js"></script>

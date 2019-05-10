@@ -33,7 +33,7 @@ function loadMovies() {
         films = movies;
 
     }).catch((error) => {
-        alert('Oh no! Something went wrong.\nCheck the console for details.');
+        // alert('Oh no! Something went wrong.\nCheck the console for details.');
         console.log(error);
 
 
@@ -54,8 +54,8 @@ function addMovies() {
     let titlePlus = title.split(' ');
     titlePlus = titlePlus.join('+');
     console.log(titlePlus);
-    alert(title);
-    alert(ratings);
+    // alert(title);
+    // alert(ratings);
     /*fetch(`http://www.omdbapi.com/?apikey=e2d23a7a&t=${titlePlus}`).then(res =>{
      res.json()
     })
@@ -119,18 +119,18 @@ function makeEditForm() {
         $('#change-form').html(html);
 
     getMovies().then((movies) => {
-        let options;
+        let options = "";
         movies.forEach((element) => {
-            options = `<option>${element.title}</option>`;
-            $('#movie-to-edit').append(options)
-            $('#movies-to-delete').append(options)
+            options += `<option>${element.title}</option>`;
         })
+        $('#movie-to-edit').html(options)
+        $('#movies-to-delete').html(options)
     });
 
 }
 
 function deleteFilmForm () {
-    alert('hello')
+    // alert('hello')
     /*getMovies().then((elements) => {
         console.log(elements);
         alert('aqui!');
@@ -144,14 +144,14 @@ function deleteFilmForm () {
         });
     });*/
         let movieDeletion = $("#movie-to-delete").val();
-        alert('this is the movieDeletion ' + movieDeletion);
+        // alert('this is the movieDeletion ' + movieDeletion);
     getMovies().then((elements) => {
         console.log(elements);
         elements.forEach((element) => {
             if (element.title === movieDeletion) {
                 // console.log(jsonMovieId);
                 jsonMovieId = element.id;
-                alert('this is the movie to delete ' + jsonMovieId);
+                // alert('this is the movie to delete ' + jsonMovieId);
                  fetchRequestThree(jsonMovieId);
             }
         })
@@ -253,40 +253,54 @@ movieInfo().then(data => console.log(data));*/
 
 // HIDING SHIT
 
-$(function () {
-    $(".card-container").hide();
-});
-$("#logo-movie").on("click", function(e) {
-    $(".card-container").toggle("slow", function() {
+// //doesn't work
+//
+// $(function () {
+//     $("#add-movie-content").hide();
+// });
+// $("#logo-movie").on("click", function(e) {
+//     $("#add-movie-content").toggle("slow", function() {
+//
+//     });
+// });
 
-    });
-});
+//click 'Add Movie' to display add movie and HIDE 'Removie' and 'Edit'
 
 $(function () {
-    $("#movie-add").css('display', 'none');
+    // $("#movie-add").css('display', 'none');
+    $("#movie-add").hide();
 });
 $("#add-movie").on("click", function(e) {
     $("#movie-add").toggle("slow", function() {
-
     });
+    $("#change-form").hide();
+    $("#delete-form").hide();
 });
+
+
+//click 'Edit' to display edit form and HIDE 'Removie' and 'Add Movie'
 
 $(function () {
     $("#change-form").hide();
 });
 $("#edit-movie").on("click", function(e) {
-    $("#change-form").toggle("slow", function() {
-
+    $("#change-form").toggle("slow", function () {
     });
+    $("#delete-form").hide();
+    $("#movie-add").hide();
 });
+
+
+//click 'Removie' to show remove form and HIDE 'Add Movie' and 'Edit'
 
 $(function () {
     $("#delete-form").hide();
 });
 $("#delete-movie").on("click", function(e) {
     $("#delete-form").toggle("slow", function() {
-
     });
+    $("#change-form").hide();
+    $("#movie-add").hide();
 });
 
 // $(document).ready(function () {
