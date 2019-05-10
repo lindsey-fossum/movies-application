@@ -23,12 +23,12 @@ nav {
     font-family: 'Work Sans', sans-serif;
 }
 
-.nav-btn {
+.btn-salmon {
     background-color: rgba(246, 61, 44, 0.58);
     color: white !important;
 }
 
-.nav-btn:hover {
+.btn-salmon:hover {
     background-color: transparent;
     color: rgba(246, 61, 44, 0.58) !important;
     border: 1px solid rgba(246, 61, 44, 0.58);

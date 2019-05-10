@@ -219,11 +219,14 @@ function editMovie() { //changes from makeEditForm() applied to JSON
 
 }
 function renderFilms(data, id, rating) {
+    console.log(data);
     let html='';
-    html += `<div class="card m-2 mx-auto" id="${id}" style="width: 18rem;" >`;
+    html += `<div class="card col-lg-3 col-md-3 col-sm-6 m-2 mx-2" id="${id}" style="width: 18rem;" >`;
     html += `<img src="${data.Poster}" class="card-img-top" alt="...">`;
     html += `<div class="card-body">`;
     html += `<h5>${data.Title}</h5>`;
+    html += `<p>Genre: ${data.Genre}</p>`;
+    html += `<hr>`
     html += `<p>${data.Plot}</p>`;
     html += `<p>User Rating: ${rating}/5</p>`;
     html += `</div>`;

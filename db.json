@@ -36,11 +36,6 @@
       "id": 13
     },
     {
-      "title": "Arrival",
-      "rating": "5",
-      "id": 14
-    },
-    {
       "title": "Annihilation",
       "rating": "3",
       "id": 15
@@ -51,11 +46,6 @@
       "id": 16
     },
     {
-      "title": "Beetlejuice",
-      "rating": "4",
-      "id": 17
-    },
-    {
       "title": "The Man Who Knew Too Little",
       "rating": "5",
       "id": 18
@@ -64,6 +54,16 @@
       "title": "Laura",
       "rating": "5",
       "id": 19
+    },
+    {
+      "title": "arrival",
+      "rating": "1",
+      "id": 20
+    },
+    {
+      "title": "dude, where's my car",
+      "rating": "1",
+      "id": 21
     }
   ]
 }
