@@ -18,18 +18,19 @@ sayHello('World');
 var films;
 function loadMovies() {
     getMovies().then((movies) => {
-        let options;
+        let options='';
         movies.forEach((element) => {
-            options = `<option>${element.title}</option>`;
-            $('#movie-to-edit').append(options)
-            $('#movie-to-delete').append(options)
+            options += `<option>${element.title}</option>`;
+           return options
         });
+        $('#movie-to-edit').html(options);
+        $('#movie-to-delete').html(options);
         console.log('Here are all the movies:');
         movies.forEach(({title, rating, id}) => {
 
             omdbApi(title, id, rating);
             console.log(`id#${id} - ${title} - rating: ${rating}`);
-        })
+        });
         films = movies;
 
     }).catch((error) => {
@@ -45,7 +46,7 @@ $('#edit-movie-btn').on("click", editMovie);
 $("#add-movie-btn").click(addMovies);
 $('#delete-movie-btn').click(deleteFilmForm);
 
-// document.getElementById("add-movie-btn").addEventListener("click", addMovies, false);
+
 
 function addMovies() {
     console.log("It works!");
@@ -54,15 +55,7 @@ function addMovies() {
     let titlePlus = title.split(' ');
     titlePlus = titlePlus.join('+');
     console.log(titlePlus);
-    // alert(title);
-    // alert(ratings);
-    /*fetch(`http://www.omdbapi.com/?apikey=e2d23a7a&t=${titlePlus}`).then(res =>{
-     res.json()
-    })
-        .then(data => {
-            console.log(data);
-        }).catch(console.log('you have meddled with the primal forces of nature'))
-*/
+
 
     const moviePost = {title: `${title}`, rating: `${ratings}`, id: ""};
     const url = '/api/movies';
@@ -130,19 +123,7 @@ function makeEditForm() {
 }
 
 function deleteFilmForm () {
-    // alert('hello')
-    /*getMovies().then((elements) => {
-        console.log(elements);
-        alert('aqui!');
 
-        elements.forEach((element) => {
-            if (element.title === movieDeletion) {
-                // console.log(jsonMovieId);
-                jsonMovieId = element.id;
-                return fetchRequestThree(jsonMovieId);
-            }
-        });
-    });*/
         let movieDeletion = $("#movie-to-delete").val();
         // alert('this is the movieDeletion ' + movieDeletion);
     getMovies().then((elements) => {
@@ -251,24 +232,6 @@ function omdbApi(title, id, rating){
 }
 
 
-/*
-movieInfo().then(data => console.log(data));*/
-
-// HIDING SHIT
-
-// //doesn't work
-//
-// $(function () {
-//     $("#add-movie-content").hide();
-// });
-// $("#logo-movie").on("click", function(e) {
-//     $("#add-movie-content").toggle("slow", function() {
-//
-//     });
-// });
-
-//click 'Add Movie' to display add movie and HIDE 'Removie' and 'Edit'
-
 $(function () {
     // $("#movie-add").css('display', 'none');
     $("#movie-add").hide();
@@ -306,18 +269,6 @@ $("#delete-movie").on("click", function(e) {
     $("#movie-add").hide();
 });
 
-// $(document).ready(function () {
-//     alert("CHEATER CHEATER");
-// });
-
-/*$(function () {
-    $("#add-movie-btn").on("click", function() {
-        location.reload(); //Change so we're not cheaters
-    });
-   /!* $("#delete-movie-btn").on("click", function() {
-        location.reload(); //Change so we're not cheaters
-    });*!/
-});*/
 
 $(document).ready(function(){
    loadMovies();

@@ -1,29 +1,14 @@
 {
   "movies": [
     {
-      "title": "Casablanca",
-      "rating": "3",
-      "id": 6
-    },
-    {
       "title": "Star Wars episode iv A New Hope",
-      "rating": "4",
+      "rating": "1",
       "id": 7
     },
     {
       "title": "Don't Be A Menace to South Central While Drinking Your Juice In The Hood",
       "rating": "5",
       "id": 8
-    },
-    {
-      "title": "Hitchhiker's Guide To The Galaxy",
-      "rating": "4",
-      "id": 10
-    },
-    {
-      "title": "one flew over the cuckoo's nest",
-      "rating": "5",
-      "id": 11
     },
     {
       "title": "Dune",
@@ -57,13 +42,38 @@
     },
     {
       "title": "arrival",
-      "rating": "1",
+      "rating": "5",
       "id": 20
     },
     {
-      "title": "dude, where's my car",
-      "rating": "1",
+      "title": "one flew over the cuckoo's nest",
+      "rating": "4",
       "id": 21
+    },
+    {
+      "title": "garbage",
+      "rating": "5",
+      "id": 22
+    },
+    {
+      "title": "the mask",
+      "rating": "1",
+      "id": 23
+    },
+    {
+      "title": "inglorious bastards",
+      "rating": "1",
+      "id": 25
+    },
+    {
+      "title": "cape fear",
+      "rating": "4",
+      "id": 26
+    },
+    {
+      "title": "Hitchhiker's Guide To The Galaxy",
+      "rating": "4",
+      "id": 27
     }
   ]
 }
