@@ -164,7 +164,6 @@ function editMovie() { //changes from makeEditForm() applied to JSON
     let newRating = $("#new-movie-ratings").val();
     let movieId = $("#movie-to-edit").val();
 
-    console.log("Hello you have reached editMovie function please fuck off");
     console.log(movieId);
 
     getMovies().then((elements) => {
@@ -213,7 +212,6 @@ function renderFilms(data, id, rating) {
     html += `</div>`;
     html += `</div>`;
     $('.loader').css('display', 'none');
-    console.log("FUCKING HTML " + html);
     $('#add-movie-content').append(html);
 }
 
